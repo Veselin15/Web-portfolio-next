@@ -113,24 +113,48 @@ export const PROJECTS: Project[] = [
         description: "A high-performance, real-time job aggregation engine. Scrapes, normalizes, and serves tech job listings from LinkedIn, Glassdoor, and Indeed via a clean REST API.",
         tech: ["Django", "DRF", "Scrapy", "Celery", "PostgreSQL", "Docker", "Stripe"],
         repoUrl: "https://github.com/Veselin15/TechJobsData-API",
+        liveUrl: "https://techjobsdata.com"
+    },
+    {
+        id: "calories-tracker",
+        title: "CaloriesTracker",
+        category: "Software",
+        description: "A modern, full-stack nutrition tracking application. Users can log meals, set dietary goals, and visualize progress with interactive charts, powered by the FatSecret API.",
+        tech: ["Django", "PostgreSQL", "Docker", "Chart.js", "Bootstrap", "FatSecret API"],
+        repoUrl: "https://github.com/Veselin15/CaloriesTracker.git",
     },
     {
         id: "face-recognition",
         title: "Celebrity Face Recognition AI",
         category: "Software",
-        description: "Web app for celebrity face recognition using FaceNet for feature extraction and SVM for classification.",
-        tech: ["Python", "FaceNet", "SVM", "Flask"],
-        repoUrl: "https://github.com/Veselin15/Face-Recognition",
-        image: "/projects/face-ai.png"
+        description: "An AI-powered web app that identifies celebrities from user images. Utilizes FaceNet for facial feature extraction and Support Vector Machines (SVM) for high-accuracy classification.",
+        tech: ["Python", "Django", "FaceNet", "PyTorch", "SVM", "PostgreSQL"],
+        repoUrl: "https://github.com/Veselin15/Image_Classification_AI.git"
     },
     {
-        id: "scheduling-system",
-        title: "School Class Scheduling",
+        id: "project-planner-webapp",
+        title: "Project Planner WebApp",
         category: "Software",
-        description: "Desktop application that auto-generates conflict-free timetables based on session counts and teacher availability.",
-        tech: ["Python", "PyQt5", "Algorithms"],
-        repoUrl: "https://github.com/Veselin15/School-Scheduler",
-        image: "/projects/scheduler.png"
+        description: "A robust Django-based project management tool featuring rich text planning (CKEditor), a modern Dark UI, and secure user authentication with PostgreSQL.",
+        tech: ["Django", "PostgreSQL", "Docker", "Bootstrap 5", "CKEditor"],
+        repoUrl: "https://github.com/Veselin15/Project-Planner-WebApp"
+    },
+    {
+        id: "secure-banking-cpp",
+        title: "Secure Banking System (C++)",
+        category: "Software",
+        description: "A secure console-based banking system featuring SHA-256 password hashing, persistent JSON storage, and automatic transaction recovery via journaling.",
+        tech: ["C++", "OpenSSL", "JSON", "Multithreading", "SHA-256"],
+        repoUrl: "https://github.com/Veselin15/banking_system_cpp"
+    },
+    {
+        id: "petstagram",
+        title: "Petstagram",
+        category: "Software",
+        description: "A social photo-sharing application for pet owners. Inspired by Instagram, it features pet profiles, photo tagging, and community interactions like likes and comments.",
+        tech: ["Django", "Python", "SQLite", "Pillow", "HTML5", "CSS3"],
+        repoUrl: "https://github.com/Veselin15/Petsagram",
+        image: "/images/projects/petstagram.png"
     },
 
     // --- HARDWARE PROJECTS ---
