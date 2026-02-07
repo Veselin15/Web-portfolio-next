@@ -9,7 +9,7 @@ import Image from "next/image";
 const ROLES = ["Python Developer", "Django Specialist", "Hardware Enthusiast", "Problem Solver"];
 
 
-const FiverrIcon = ({ size = 100, className = "" }: { size?: number, className?: string }) => (
+const FiverrIcon = ({ size = 20, className = "" }: { size?: number, className?: string }) => (
 <svg
     width={size}
     height={size}

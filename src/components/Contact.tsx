@@ -1,8 +1,26 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Loader2, Linkedin, Github } from "lucide-react";
+import { Send, Loader2, Linkedin, Github } from "lucide-react";
 import { PROFILE } from "@/data/portfolio";
+
+// Reusing the Fiverr Icon for consistency
+const FiverrIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 508.02 508.02"
+    fill="currentColor"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="315.97" cy="162.19" r="26.87"/>
+    <path
+      d="M345.87,207.66h-123V199.6c0-15.83,15.83-16.13,23.89-16.13,9.25,0,13.44.9,13.44.9v-43.6a155.21,155.21,0,0,0-19.71-1.19c-25.68,0-73.16,7.16-73.16,61.51V208h-22.4v40.31h22.4v85.1h-20.9v40.31H247.34V333.37H222.85v-85.1H290v85.1H269.13v40.31h97.65V333.37H345.87Z"
+      transform="translate(-1.83 -0.98)"
+    />
+  </svg>
+);
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -44,9 +62,9 @@ export default function Contact() {
             <span className="text-sky-500">05.</span> Get In Touch
         </motion.h2>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-            {/* Left: Contact Info */}
+            {/* Left: Introduction & Socials */}
             <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -58,37 +76,18 @@ export default function Contact() {
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">amazing together.</span>
                 </h3>
                 <p className="text-slate-400 text-lg leading-relaxed">
-                    Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!
+                    Have a project in mind or just want to discuss the latest tech? Fill out the form, and I'll get back to you as soon as possible.
                 </p>
 
-                <div className="space-y-6 pt-4">
-                    <div className="flex items-center gap-4 text-slate-300">
-                        <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-sky-400">
-                            <Mail size={20} />
-                        </div>
-                        <div>
-                            <p className="text-sm text-slate-500 font-mono">Mail Me</p>
-                            <a href={`mailto:${PROFILE.email}`} className="font-bold hover:text-sky-400 transition">{PROFILE.email}</a>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center gap-4 text-slate-300">
-                        <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-indigo-400">
-                            <MapPin size={20} />
-                        </div>
-                        <div>
-                            <p className="text-sm text-slate-500 font-mono">Location</p>
-                            <p className="font-bold">{PROFILE.location}</p>
-                        </div>
-                    </div>
-                </div>
-
                 <div className="flex gap-4 pt-4">
-                    <a href={PROFILE.socials.linkedin} target="_blank" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-sky-500 transition-all">
-                        <Linkedin size={20} />
+                    <a href={PROFILE.socials.linkedin} target="_blank" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-sky-500 transition-all group" aria-label="LinkedIn">
+                        <Linkedin size={24} className="group-hover:scale-110 transition-transform"/>
                     </a>
-                    <a href={PROFILE.socials.github} target="_blank" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-sky-500 transition-all">
-                        <Github size={20} />
+                    <a href={PROFILE.socials.github} target="_blank" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-sky-500 transition-all group" aria-label="GitHub">
+                        <Github size={24} className="group-hover:scale-110 transition-transform"/>
+                    </a>
+                    <a href="https://www.fiverr.com/veselin_06/" target="_blank" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-[#1DBF73] hover:border-[#1DBF73] transition-all group" aria-label="Fiverr">
+                        <FiverrIcon size={24} className="group-hover:scale-110 transition-transform"/>
                     </a>
                 </div>
             </motion.div>
