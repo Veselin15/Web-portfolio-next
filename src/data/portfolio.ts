@@ -109,9 +109,10 @@ export const PROJECTS: Project[] = [
         id: "calories-tracker",
         title: "Calories Tracker",
         category: "Software",
-        description: "A Django-based web app for tracking daily calorie intake and nutrition goals. Features user authentication and FatSecret API integration.",
-        tech: ["Django", "PostgreSQL", "FatSecret API", "Bootstrap"],
-        repoUrl: "https://github.com/Veselin15/Calories-Tracker",
+        description: "Short summary for card...",
+        longDescription: "Extended description for the detail page. This app uses Django...",
+        tech: ["Django", "PostgreSQL"],
+        repoUrl: "https://github.com/...",
         image: "/projects/calories.png"
     },
     {
@@ -151,14 +152,5 @@ export const PROJECTS: Project[] = [
         tech: ["Embedded C", "ESP8266", "MQTT", "Grafana"],
         image: "/projects/weather.png"
     },
-    {
-        id: "my-new-robot",
-        title: "My New Robot",
-        category: "Hardware",
-        description: "Short summary...",
-        longDescription: "Detailed explanation...",
-        features: ["Feature 1", "Feature 2"],
-        tech: ["Arduino", "C++"],
-        image: "/projects/new-robot.png"
-    },
+
 ];
