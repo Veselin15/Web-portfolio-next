@@ -1,7 +1,6 @@
 "use client";
 import { motion, useMotionTemplate, useMotionValue, animate, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { PROFILE } from "@/data/portfolio";
+import { useEffect, useRef } from "react";
 
 // --- 1. ANIMATED COUNTER COMPONENT ---
 const Counter = ({ to, text }: { to: number; text: string }) => {
@@ -25,11 +24,12 @@ const Counter = ({ to, text }: { to: number; text: string }) => {
   }, [isInView, to]);
 
   return (
-    <div>
-      <h4 className="text-3xl font-bold text-white flex items-center gap-1">
-        <span ref={nodeRef}>0</span>+
+    <div className="flex flex-col items-center sm:items-start">
+      <h4 className="text-4xl font-bold text-white flex items-center gap-1 drop-shadow-lg">
+        <span ref={nodeRef}>0</span>
+        <span className="text-cyan-400">+</span>
       </h4>
-      <span className="text-xs text-slate-500 uppercase tracking-wider">{text}</span>
+      <span className="text-xs text-slate-400 uppercase tracking-widest font-mono mt-1">{text}</span>
     </div>
   );
 };
@@ -55,7 +55,7 @@ const TechCard = ({ title, icon, color, children }: { title: string; icon: strin
 
   return (
     <div
-      className="group relative bg-slate-900/80 rounded-2xl border border-slate-700/50 overflow-hidden hover:border-slate-500/50 transition-colors"
+      className="group relative bg-slate-900/40 backdrop-blur-md rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10 hover:shadow-2xl hover:shadow-cyan-500/10"
       onMouseMove={handleMouseMove}
     >
       {/* Spotlight Gradient Effect */}
@@ -65,18 +65,21 @@ const TechCard = ({ title, icon, color, children }: { title: string; icon: strin
           background: useMotionTemplate`
             radial-gradient(
               400px circle at ${mouseX}px ${mouseY}px,
-              rgba(56, 189, 248, 0.1),
+              rgba(34, 211, 238, 0.1),
               transparent 80%
             )
           `,
         }}
       />
 
-      <div className="relative p-6 h-full">
-        <h4 className="font-bold text-white mb-6 flex items-center gap-3 text-sm uppercase tracking-wider">
-          <i className={`fas ${icon} ${color} transition-transform group-hover:scale-110 duration-300`}></i> {title}
+      <div className="relative p-6 h-full flex flex-col justify-between">
+        <h4 className="font-bold text-slate-200 mb-6 flex items-center gap-3 text-sm uppercase tracking-wider">
+          <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-300`}>
+             <i className={`fas ${icon} ${color}`}></i>
+          </div>
+          {title}
         </h4>
-        <div className="flex gap-6 text-5xl text-slate-400 group-hover:text-slate-200 transition-colors">
+        <div className="flex gap-5 text-4xl text-slate-500 group-hover:text-slate-200 transition-colors">
           {children}
         </div>
       </div>
@@ -86,11 +89,14 @@ const TechCard = ({ title, icon, color, children }: { title: string; icon: strin
 
 export default function About() {
   return (
-    <section id="about" className="py-24 relative bg-slate-950 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
+    // Removed bg-slate-950 to allow global gradient
+    <section id="about" className="py-32 relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+      {/* Dynamic Background Decor */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] -z-10 pointer-events-none animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-start">
 
         {/* LEFT COLUMN: BIO */}
         <motion.div
@@ -98,44 +104,49 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="space-y-8"
+          className="space-y-10"
         >
-          <h2 className="text-4xl font-bold text-white">Hello, I'm Veselin.</h2>
+          <div className="space-y-4">
+             <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">01. About Me</span>
+             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                Hello, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Veselin</span>.
+             </h2>
+          </div>
 
           <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
             <p>
               I am a passionate Junior Developer who loves building software that solves real-world problems.
-              My curiosity doesn't stop at the screen; I have a deep love for <Highlight color="text-sky-400">electronics and DIY projects</Highlight>,
-              often grabbing the soldering iron to bring ideas to life. I am fascinated by the bridge between <Highlight color="text-indigo-400">hardware and software</Highlight>.
+              My curiosity doesn't stop at the screen; I have a deep love for <Highlight color="text-cyan-400">electronics and DIY projects</Highlight>,
+              often grabbing the soldering iron to bring ideas to life. I am fascinated by the bridge between <Highlight color="text-purple-400">hardware and software</Highlight>.
             </p>
 
             <p>
               When I'm not coding or building circuits, I am exploring the world. I love <span className="text-white font-bold">traveling and sports</span>.
-              Since last year, I have discovered a passion for <Highlight color="text-sky-400">reading books</Highlight>,
-              and I've been training <Highlight color="text-rose-400">boxing</Highlight> for a while to keep my mind and body sharp.
-              I push my limits by conquering <Highlight color="text-emerald-400">mountain peaks</Highlight> and spending time in nature.
+              Since last year, I have discovered a passion for <Highlight color="text-cyan-400">reading books</Highlight>,
+              and I've been training <Highlight color="text-rose-400">boxing</Highlight> to keep my mind and body sharp.
+              I push my limits by conquering <Highlight color="text-emerald-400">mountain peaks</Highlight>.
             </p>
+          </div>
+
+          {/* Interactive Stats Row */}
+          <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/10">
+             <Counter to={2} text="Years Coding" />
+             <Counter to={15} text="Projects" />
+             <Counter to={100} text="Passion" />
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="pt-4"
+            className="pt-2"
           >
              <a href="https://www.goodreads.com/user/show/112454127-ves-bg" target="_blank"
-                className="inline-flex items-center gap-3 px-6 py-3 bg-[#f4f1ea] text-[#372213] font-bold rounded-xl hover:bg-white hover:scale-105 transition-all shadow-lg border border-[#372213]/20 group">
-                <i className="fab fa-goodreads text-2xl group-hover:rotate-12 transition-transform"></i>
+                className="inline-flex items-center gap-3 px-6 py-4 bg-white/5 backdrop-blur-md text-slate-200 font-bold rounded-xl border border-white/10 hover:bg-white/10 hover:scale-105 transition-all shadow-lg group">
+                <i className="fab fa-goodreads text-2xl text-[#e8e4d9] group-hover:rotate-12 transition-transform"></i>
                 <span>My Goodreads Profile</span>
              </a>
           </motion.div>
-
-          {/* Interactive Stats Row */}
-          <div className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800">
-             <Counter to={2} text="Years Coding" />
-             <Counter to={15} text="Projects" />
-             <Counter to={100} text="Passion" />
-          </div>
         </motion.div>
 
         {/* RIGHT COLUMN: TECH STACK GRID */}
@@ -145,36 +156,32 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-           <h3 className="text-2xl font-mono font-bold text-white mb-8 flex items-center gap-3 lg:justify-end">
-              <span className="text-sky-500">01.</span> Tech Stack
-           </h3>
-
            {/* The 2x2 Grid Layout with Spotlight Cards */}
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
               {/* 1. BACKEND */}
-              <TechCard title="Backend" icon="fa-server" color="text-sky-400">
+              <TechCard title="Backend" icon="fa-server" color="text-cyan-400">
                 <i className="devicon-python-plain hover:text-[#3776AB] transition-colors" title="Python"></i>
                 <i className="devicon-django-plain hover:text-[#092E20] transition-colors" title="Django"></i>
                 <i className="devicon-fastapi-plain hover:text-[#009688] transition-colors" title="FastAPI"></i>
               </TechCard>
 
               {/* 2. DATA & OPS */}
-              <TechCard title="Data & Ops" icon="fa-database" color="text-indigo-400">
+              <TechCard title="Data & Ops" icon="fa-database" color="text-purple-400">
                 <i className="devicon-postgresql-plain hover:text-[#336791] transition-colors" title="PostgreSQL"></i>
                 <i className="devicon-redis-plain hover:text-[#DC382D] transition-colors" title="Redis"></i>
                 <i className="devicon-docker-plain hover:text-[#2496ED] transition-colors" title="Docker"></i>
               </TechCard>
 
               {/* 3. EMBEDDED */}
-              <TechCard title="Embedded" icon="fa-microchip" color="text-yellow-500">
+              <TechCard title="Embedded" icon="fa-microchip" color="text-amber-400">
                 <i className="devicon-cplusplus-plain hover:text-[#00599C] transition-colors" title="C++"></i>
                 <i className="devicon-arduino-plain hover:text-[#00979D] transition-colors" title="Arduino"></i>
                 <i className="devicon-embeddedc-plain hover:text-white transition-colors" title="Embedded C"></i>
               </TechCard>
 
               {/* 4. FRONTEND */}
-              <TechCard title="Frontend" icon="fa-laptop-code" color="text-pink-500">
+              <TechCard title="Frontend" icon="fa-laptop-code" color="text-pink-400">
                 <i className="devicon-html5-plain hover:text-[#E34F26] transition-colors" title="HTML5"></i>
                 <i className="devicon-tailwindcss-original hover:text-[#38B2AC] transition-colors" title="Tailwind"></i>
                 <i className="devicon-javascript-plain hover:text-[#F7DF1E] transition-colors" title="JavaScript"></i>
