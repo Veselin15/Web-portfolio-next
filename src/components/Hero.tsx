@@ -3,9 +3,30 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { PROFILE } from "@/data/portfolio";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 const ROLES = ["Python Developer", "Django Specialist", "Hardware Enthusiast", "Problem Solver"];
+
+
+const FiverrIcon = ({ size = 100, className = "" }: { size?: number, className?: string }) => (
+<svg
+    width={size}
+    height={size}
+    viewBox="0 0 508.02 508.02" // Matches your SVG's viewport
+    fill="currentColor"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* The Dot on the 'i' */}
+    <circle cx="315.97" cy="162.19" r="26.87"/>
+    {/* The 'fi' Ligature Path */}
+    <path
+      d="M345.87,207.66h-123V199.6c0-15.83,15.83-16.13,23.89-16.13,9.25,0,13.44.9,13.44.9v-43.6a155.21,155.21,0,0,0-19.71-1.19c-25.68,0-73.16,7.16-73.16,61.51V208h-22.4v40.31h22.4v85.1h-20.9v40.31H247.34V333.37H222.85v-85.1H290v85.1H269.13v40.31h97.65V333.37H345.87Z"
+      transform="translate(-1.83 -0.98)"
+    />
+  </svg>
+);
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -41,19 +62,27 @@ export default function Hero() {
       <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-sky-500/20 rounded-full blur-[120px] animate-pulse" />
 
       {/* 2. Content */}
-      <div className="relative z-10 max-w-4xl space-y-8">
+      <div className="relative z-10 max-w-4xl space-y-8 flex flex-col items-center">
 
         {/* Profile Image with 'Pulse' Ring */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="relative w-32 h-32 mx-auto mb-8"
+          className="relative w-48 h-48 md:w-64 md:h-64 mb-8"
         >
-           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 blur-lg opacity-75 animate-pulse" />
-           <div className="relative w-full h-full rounded-full bg-slate-900 border-2 border-slate-700 overflow-hidden flex items-center justify-center text-5xl">
-              {/* Use an <img> here if you have one, otherwise emoji */}
-              👨‍💻
+           {/* Glowing Backdrop */}
+           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 blur-[60px] opacity-40 animate-pulse" />
+
+           {/* The Image Container */}
+           <div className="relative w-full h-full rounded-full border-[6px] border-slate-900/80 overflow-hidden shadow-2xl ring-4 ring-slate-800">
+              <Image
+                src="/images/hero/profile.jpg"
+                alt="Profile Picture"
+                fill
+                className="object-cover"
+                priority
+              />
            </div>
         </motion.div>
 
@@ -83,13 +112,18 @@ export default function Hero() {
           {[
             { icon: Github, link: PROFILE.socials.github },
             { icon: Linkedin, link: PROFILE.socials.linkedin },
-            { icon: Mail, link: `mailto:${PROFILE.email}` }
+            { icon: FiverrIcon, link: "https://www.fiverr.com/veselin_06/" }
           ].map((item, i) => (
             <a
               key={i}
               href={item.link}
               target="_blank"
-              className="p-3 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 hover:text-white hover:border-sky-500 hover:shadow-[0_0_15px_rgba(14,165,233,0.5)] transition-all duration-300"
+
+              className={`p-3 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 hover:text-white transition-all duration-300 ${
+                  i === 2 
+                  ? "hover:border-[#1DBF73] hover:text-[#1DBF73] hover:shadow-[0_0_15px_rgba(29,191,115,0.5)]" 
+                  : "hover:border-sky-500 hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]"
+              }`}
             >
               <item.icon size={24} />
             </a>
