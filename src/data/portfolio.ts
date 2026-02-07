@@ -181,20 +181,142 @@ The portfolio itself is not just a static HTML page, but a complex web system:
         ]
     },
     {
-        id: "arduino-robot",
-        title: "Autonomous Line Follower",
+        id: "audio-amplifier-tonecontrol",
+        title: "Audio Amp 30W & Baxandall Tone Control DIY",
         category: "Hardware",
-        description: "A high-speed line following robot using PID control and an array of IR sensors. Designed for competitive robotics.",
-        longDescription: "A high-speed line following robot using PID control and an array of IR sensors. Designed for competitive robotics.",
-        tech: ["C++", "Arduino", "PCB Design", "PID Control"],
-        image: "/projects/robot.png"
+        description: "Simple audio amplifier 30W and baxandall tone control(treble and bass)",
+        longDescription: `
+### 1. Concept and Circuit Design
+I have always believed that the best sound is the one you create yourself. In the late summer of 2025, I took on the challenge of assembling a compact yet high-quality 30-watt audio amplifier. The system is built on a modular principle:
+
+- **The Heart (PSU):** To ensure stable operation, I used a transformer with specific secondary windings. A **+12V / -12V** rail powers the preamplifier (critical for op-amp performance), while a powerful **+42V** single rail drives the main power stage.
+- **The Brain (Tone Control):** For sound shaping, I chose the classic **Baxandall topology** implemented with **uA741** operational amplifiers. This allows independent Bass and Treble adjustment without introducing significant distortion.
+- **The Muscle (Power Stage):** I relied on the proven **TDA 2050** chip. It delivers up to 32W of power with very low harmonic distortion, making it an excellent choice for home Hi-Fi applications.
+
+### 2. PCB Fabrication
+For the power supply and tone control, I avoided generic boards. Instead, I manufactured them myself using the **photoresist method**:
+1. Printing a negative photomask of the circuit.
+2. Exposing the copper surface to UV light.
+3. Developing and etching the board to achieve precise traces.
+
+### 3. Assembly and Enclosure
+I decided to give new life to an old device (**Upcycling**), giving the unit a unique retro-industrial look.
+- **Modifications:** Drilled new holes for potentiometers (Volume, Treble, Bass) and installed a dedicated ON/OFF switch with an LED indicator.
+- **Connectivity:** High-quality banana binding posts were mounted on the back panel for secure speaker connections.
+- **Internals:** PCBs are mounted using standoffs to ensure proper isolation and airflow.
+
+### 4. Final Touches & Conclusion
+I used a label printer to create custom labels for all controls. The result is an amplifier that delivers punchy bass and crystal-clear highs—proof that with passion and a soldering iron, we can build gear that brings more joy than anything bought off the shelf.
+`,
+        tech: ["TDA 2050", "uA741 Op-Amp", "PCB Design", "Photoresist Etching", "Analog Electronics"],
+        features: [
+            "Custom Baxandall Tone Control",
+            "Dual-Rail Power Supply",
+            "Hand-Etched PCBs",
+            "Upcycled Industrial Enclosure",
+            "30W Hi-Fi Output"
+        ],
+        image: "/images/projects/audio-amplifier-tonecontrol/main.jpg", // Make sure to create this folder
+        gallery: [
+            "/images/projects/audio-amplifier-tonecontrol/above.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/back.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/front_panel.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/opened_above.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/opened_side.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/opened_side2.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/scheme-amplifier.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/scheme-power-supply.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/scheme-power-supply-PCB.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/scheme-preamp-tonecontrol.jpg",
+            "/images/projects/audio-amplifier-tonecontrol/scheme-preamp-tonecontrol-PCB.jpg"
+        ]
     },
     {
-        id: "iot-weather",
-        title: "IoT Weather Station",
+        id: "active-speaker-conversion",
+        title: "Active Speaker",
         category: "Hardware",
-        description: "Solar-powered weather station transmitting temperature, humidity, and pressure data to a cloud dashboard via ESP8266.",
-        tech: ["Embedded C", "ESP8266", "MQTT", "Grafana"],
-        image: "/projects/weather.png"
+        description: "Transforming a passive Samsung subwoofer into a fully autonomous audio system with Bluetooth and FM Radio.",
+        longDescription: `
+### 1. The Enclosure: From Passive to Active
+In August 2024, I transformed an old passive **Samsung subwoofer** into a modern active speaker. The enclosure featured a "hollow" rear zone structurally separated from the acoustic chamber, which was the perfect place to install electronics without disrupting the sound. I utilized the factory plastic standoffs to securely mount the new boards.
+
+### 2. Electronics: The "Ironing Method"
+Unlike my previous photoresist projects, I experimented with the **Toner Transfer method** ("ironing") to fabricate the PCBs.
+- **Amplifier:** A custom mono stage delivering **20-30W**, equipped with a massive heatsink for passive cooling.
+- **Power Supply:** A filtering block with a bridge rectifier (**S4VB**) and quality **Marcon electrolytic capacitors** (4700uF / 35V), powered by a reliable **LAPP AG transformer** to ensure hum-free operation.
+
+### 3. Modern Interface and Assembly
+To add modern functionality, I integrated a multi-functional module (**JQ-D106BT-A1**) which adds:
+- **Bluetooth Connectivity**
+- **FM Radio** (with an internal antenna routed discreetly)
+- **USB & TF Card Slots**
+- **AUX Input**
+
+### 4. Cable Management
+I paid special attention to the wiring. All cables are **twisted** to reduce electromagnetic interference and tidied up with zip ties. The control panel, power jack, and fuse were fitted into custom-cut holes, resulting in a clean, factory-like finish.
+`,
+        tech: ["Toner Transfer PCB", "Analog Audio", "Bluetooth Integration", "Power Supply Design"],
+        features: [
+            "Bluetooth & FM Radio",
+            "Upcycled Samsung Enclosure",
+            "Custom 30W Mono Amplifier",
+            "Low-Noise Power Supply",
+            "Internal Antenna Routing"
+        ],
+        image: "/images/projects/speaker/main.jpg", // Make sure to create this folder
+        gallery: [
+            "/images/projects/active-speaker/amplifier.jpg",
+            "/images/projects/active-speaker/multi-functional-module.jpg",
+            "/images/projects/active-speaker/power-supply.jpg",
+            "/images/projects/active-speaker/speaker-main.jpg",
+            "/images/projects/active-speaker/speaker-open.jpg",
+            "/images/projects/active-speaker/transformer.jpg"
+        ]
+    },
+    {
+        id: "diy-cooling-module",
+        title: "DIY Room Cooling Module with PWM Control",
+        category: "Hardware",
+        description: "A high-airflow cooling module built from repurposed computer fans, featuring a custom MC14049UB-based PWM speed controller.",
+        longDescription: `
+### 1. The Challenge: Beating the Summer Heat
+The scorching heat of **Summer 2023** challenged me to find a quick and effective cooling solution for my workspace. Rather than purchasing a standard desk fan, I decided to engineer my own high-airflow module by repurposing powerful computer components and designing a custom control circuit.
+
+### 2. Construction and Design
+My goal was to generate a significant airflow in a compact form factor.
+- **Unified Block:** I combined **three large computer fans (120mm)** into a single unit.
+- **Mounting:** The fans are mechanically linked and mounted onto a sturdy **wooden base**, which provides stability and dampens vibrations.
+- **Power:** The system runs on an external **12V source**, connected via a standard DC barrel jack mounted directly on the controller board.
+
+### 3. Electronics: Custom PWM Speed Control
+The highlight of this project is the custom speed controller. Instead of using simple voltage regulation (which reduces torque and efficiency), I implemented **Pulse Width Modulation (PWM)**.
+
+- **The Brain (MC14049UB):** The core of the board is the **MC14049UB Hex Inverter/Buffer** IC, configured to act as an oscillator. By adjusting the potentiometer, I vary the **duty cycle** of the signal sending power to the fans.
+- **Efficiency:** The driving transistors operate in **switching mode**, minimizing power loss as heat. Small heatsinks ensure long-term reliability.
+- **Smooth Control:** This design allows for precise speed adjustment from a silent breeze to maximum airflow.
+
+### 4. PCB Fabrication
+Consistent with my other electronics projects, I wanted a professional finish. I designed the PCB myself and manufactured it using the **photoresist method**:
+1. Exposing the photosensitive board through a negative template.
+2. Chemical etching to remove excess copper.
+3. Drilling and soldering components for a compact layout that mounts neatly on the fan frame.
+
+### Conclusion
+Since August 2023, this module has become an essential part of my desk setup. It serves as a great example of **upcycling**—enhancing standard computer parts with custom analog electronics to solve a real-world problem.
+`,
+        tech: ["MC14049UB", "PWM Control", "Analog Electronics", "PCB Design", "Upcycling"],
+        features: [
+            "Custom PWM Speed Controller",
+            "High-Airflow (3x 120mm Fans)",
+            "Hand-Etched PCB",
+            "Efficient Switching Mode",
+            "Vibration-Dampened Base"
+        ],
+        image: "/images/projects/diy-cooling-module/main.jpg",
+        gallery: [
+            "/images/projects/diy-cooling-module/circuit.jpg",
+            "/images/projects/cooling-module/setup.jpg",
+            "/images/projects/cooling-module/pcb.jpg"
+        ]
     },
 ];
