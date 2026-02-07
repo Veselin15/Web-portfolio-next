@@ -68,7 +68,7 @@ export default function Navbar() {
   return (
     // Hover Zone: Reveals nav on mouse enter even if hidden
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 hover:pt-6 transition-all h-24 pointer-events-none hover:pointer-events-auto"
+      className="fixed top-0 left-0 right-0 z-40 flex justify-center pt-6 hover:pt-6 transition-all h-20 pointer-events-none hover:pointer-events-auto"
       onMouseEnter={() => {
         // Stop the inactivity timer if the user hovers the area
         if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
