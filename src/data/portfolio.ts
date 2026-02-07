@@ -94,13 +94,14 @@ export interface Project {
     id: string;
     title: string;
     category: ProjectCategory;
-    description: string; // Short summary for the card
-    longDescription?: string; // Deep dive for the details page (Hardware only)
+    description: string;
+    longDescription?: string;
     tech: string[];
     image?: string;
     repoUrl?: string;
     liveUrl?: string;
-    features?: string[]; // List of cool hardware features
+    features?: string[];
+    gallery?: string[];
 }
 
 export const PROJECTS: Project[] = [
@@ -109,10 +110,9 @@ export const PROJECTS: Project[] = [
         id: "calories-tracker",
         title: "Calories Tracker",
         category: "Software",
-        description: "Short summary for card...",
-        longDescription: "Extended description for the detail page. This app uses Django...",
-        tech: ["Django", "PostgreSQL"],
-        repoUrl: "https://github.com/...",
+        description: "A Django-based web app for tracking daily calorie intake and nutrition goals. Features user authentication and FatSecret API integration.",
+        tech: ["Django", "PostgreSQL", "FatSecret API", "Bootstrap"],
+        repoUrl: "https://github.com/Veselin15/Calories-Tracker",
         image: "/projects/calories.png"
     },
     {
@@ -134,7 +134,52 @@ export const PROJECTS: Project[] = [
         image: "/projects/scheduler.png"
     },
 
-    // --- HARDWARE PROJECTS (Examples - Replace with your real ones) ---
+    // --- HARDWARE PROJECTS ---
+    {
+        id: "homelab-server",
+        title: "Home Lab Server & Portfolio",
+        category: "Hardware",
+        description: "Transforming old hardware into a powerful home Linux server hosted via Cloudflare Tunnels.",
+        // Note: Using template literals (backticks) for multi-line strings
+        longDescription: `
+### 1. The Idea: New Life for Old Hardware
+Instead of throwing away my old laptop, I decided to turn it into the heart of my **home lab**. The goal was to create a fully functional web server accessible from anywhere in the world, without paying for expensive cloud hosting (VPS) and without compromising my home network security. On this server, I built and hosted my personal portfolio – the very site you are looking at right now.
+
+### 2. Hardware and Server Architecture
+The first step was installing **Ubuntu Server** on the machine. I chose an architecture based entirely on microservices (Containers) for ease of management and scalability.
+
+- **Docker & Docker Compose:** Everything runs in isolated containers. This ensures that the software (databases, site, cache) does not depend on the operating system and can be migrated to another machine in seconds.
+- **Nginx Proxy Manager:** I use this as a "gatekeeper". It distributes traffic to the correct containers (e.g., the portfolio on port 8000, the chatbot on 8001) and manages SSL certificates.
+- **Cloudflare Zero Trust Tunnel:** This was the "icing on the cake". Instead of opening ports on the router (which is a security risk) or paying for a static IP, I created an encrypted tunnel directly to Cloudflare. This keeps the site protected from DDoS attacks and accessible via HTTPS.
+
+### 3. The Software: Modern Django Stack
+The portfolio itself is not just a static HTML page, but a complex web system:
+
+- **Backend:** Python & Django – a powerful framework providing the core logic and administration panel.
+- **Frontend:** I utilized Tailwind CSS and DaisyUI for a modern, dark-themed design.
+- **Database:** PostgreSQL – a professional database for storing projects and configuration settings.
+- **AI Chatbot:** I integrated Google Gemini AI. When you ask a question in the chat, Django sends the request to Celery (an asynchronous queue), which is managed by Redis.
+
+### 4. Challenges & Troubleshooting
+- **MTU (Maximum Transmission Unit):** The connection to the Google API was timing out due to the double encapsulation of packets. I configured the Docker network to use a smaller packet size (MTU 1280), which stabilized the connection.
+- **Caching & Mobile Menu:** Resolved display issues on specific screens through precise tuning of Tailwind classes and Cloudflare cache management.
+`,
+        tech: ["Ubuntu Server", "Docker", "Nginx Proxy Manager", "Cloudflare Tunnel", "Django", "PostgreSQL", "Redis", "Celery"],
+        features: [
+            "Self-Hosted on Old Hardware",
+            "Cloudflare Zero Trust Security",
+            "Dockerized Microservices",
+            "AI Chatbot Integration (Gemini)",
+            "Nginx Reverse Proxy"
+        ],
+        // FIXED PATHS: Added leading slash "/"
+        image: "/images/projects/homelab-server/homelab.jpg",
+        gallery: [
+            "/images/projects/homelab-server/front_panel.jpg",
+            "/images/projects/homelab-server/homelab.jpg",
+            "/images/projects/homelab-server/code.png"
+        ]
+    },
     {
         id: "arduino-robot",
         title: "Autonomous Line Follower",
@@ -142,7 +187,7 @@ export const PROJECTS: Project[] = [
         description: "A high-speed line following robot using PID control and an array of IR sensors. Designed for competitive robotics.",
         longDescription: "A high-speed line following robot using PID control and an array of IR sensors. Designed for competitive robotics.",
         tech: ["C++", "Arduino", "PCB Design", "PID Control"],
-        image: "/projects/robot.png" // Ensure you have images for hardware!
+        image: "/projects/robot.png"
     },
     {
         id: "iot-weather",
@@ -152,5 +197,4 @@ export const PROJECTS: Project[] = [
         tech: ["Embedded C", "ESP8266", "MQTT", "Grafana"],
         image: "/projects/weather.png"
     },
-
 ];
