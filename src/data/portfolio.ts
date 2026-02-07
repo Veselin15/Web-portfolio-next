@@ -106,14 +106,13 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
     // --- SOFTWARE PROJECTS ---
-    {
-        id: "calories-tracker",
-        title: "Calories Tracker",
+{
+        id: "techjobsdata-api",
+        title: "TechJobsData API",
         category: "Software",
-        description: "A Django-based web app for tracking daily calorie intake and nutrition goals. Features user authentication and FatSecret API integration.",
-        tech: ["Django", "PostgreSQL", "FatSecret API", "Bootstrap"],
-        repoUrl: "https://github.com/Veselin15/Calories-Tracker",
-        image: "/projects/calories.png"
+        description: "A high-performance, real-time job aggregation engine. Scrapes, normalizes, and serves tech job listings from LinkedIn, Glassdoor, and Indeed via a clean REST API.",
+        tech: ["Django", "DRF", "Scrapy", "Celery", "PostgreSQL", "Docker", "Stripe"],
+        repoUrl: "https://github.com/Veselin15/TechJobsData-API",
     },
     {
         id: "face-recognition",
@@ -263,7 +262,7 @@ I paid special attention to the wiring. All cables are **twisted** to reduce ele
             "Low-Noise Power Supply",
             "Internal Antenna Routing"
         ],
-        image: "/images/projects/speaker/main.jpg", // Make sure to create this folder
+        image: "/images/projects/active-speaker/main.jpg", // Make sure to create this folder
         gallery: [
             "/images/projects/active-speaker/amplifier.jpg",
             "/images/projects/active-speaker/multi-functional-module.jpg",
@@ -314,9 +313,7 @@ Since August 2023, this module has become an essential part of my desk setup. It
         ],
         image: "/images/projects/diy-cooling-module/main.jpg",
         gallery: [
-            "/images/projects/diy-cooling-module/circuit.jpg",
-            "/images/projects/cooling-module/setup.jpg",
-            "/images/projects/cooling-module/pcb.jpg"
+            "/images/projects/diy-cooling-module/above.jpg",
         ]
     },
 ];
