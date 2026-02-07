@@ -1,14 +1,17 @@
+// src/app/page.tsx
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Education from "@/components/Education";
 import Certificates from "@/components/Certificates";
 import Projects from "@/components/Projects";
-// We will build Contact next, for now we can leave a placeholder or just add it if ready.
 import Contact from "@/components/Contact";
+import Navbar from "@/components/Navbar"; // <--- Import
 
 export default function Home() {
   return (
-    <main className="bg-slate-950 min-h-screen text-slate-200 selection:bg-sky-500/30">
+    <main className="relative" id="top"> {/* <--- Added ID "top" */}
+      <Navbar /> {/* <--- Added Navbar */}
+
       <Hero />
       <About />
       <Education />
