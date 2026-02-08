@@ -51,8 +51,7 @@ export default function Hero() {
   }, [displayText, isDeleting, roleIndex]);
 
   return (
-    // Removed 'bg-slate-950' to let the global gradient shine through
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden selection:bg-cyan-500/30">
+    <section className="min-h-screen flex flex-col justify-center items-center pt-15 text-center px-6 relative overflow-hidden selection:bg-cyan-500/30">
 
       {/* Brighter, More Colorful Aurora Backgrounds */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/30 rounded-full blur-[100px] animate-pulse" />
@@ -149,14 +148,6 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
-
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-10 text-cyan-500/50"
-      >
-        <ChevronDown size={32} />
-      </motion.div>
     </section>
   );
 }
